@@ -103,7 +103,7 @@ body {
 
 /* Footer */
 .footer {
-  @apply flex-col paddings w-full gap-20 bg-light-white;
+  @apply flex-col py-5 px-8 w-full gap-20 bg-light-white;
 }
 
 .footer_copyright {
