@@ -1,3 +1,4 @@
+import { getCurrentSession } from '@lib/sessionOptions';
 import React from 'react';
 
 const Main = () => {

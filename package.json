@@ -13,6 +13,7 @@
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.15",
+    "graphql-request": "^6.1.0",
     "next": "13.4.17",
     "next-auth": "^4.23.1",
     "postcss": "8.4.28",
