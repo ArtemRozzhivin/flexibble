@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import AuthProviders from './AuthProviders';
-import { getCurrentSession } from '@lib/sessionOptions';
+import { getCurrentSession } from '@lib/nextAuthOptions';
 
 // because we are using next, so we make this function async
 const Nav = async () => {

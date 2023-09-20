@@ -1,4 +1,4 @@
-import { getCurrentSession } from '@lib/sessionOptions';
+import { getCurrentSession } from '@lib/nextAuthOptions';
 import React from 'react';
 
 const Main = () => {
