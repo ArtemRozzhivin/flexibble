@@ -45,7 +45,7 @@ body {
 }
 
 .modal-head-text {
-  @apply md:text-5xl text-3xl font-extrabold text-left max-w-5xl w-full;
+  @apply md:text-5xl text-3xl font-extrabold text-center max-w-5xl w-full;
 }
 
 .no-result-text {
@@ -103,7 +103,7 @@ body {
 
 /* Footer */
 .footer {
-  @apply flex-col py-5 px-8 w-full gap-20 bg-light-white;
+  @apply flex-col py-5 px-32 w-full gap-20 bg-light-white;
 }
 
 .footer_copyright {
@@ -130,12 +130,12 @@ body {
 
 /* Navbar */
 .navbar {
-  @apply py-5 px-8 border-b border-nav-border gap-4;
+  @apply py-5 px-32 border-b border-nav-border gap-4;
 }
 
 /* Profile Menu */
 .profile_menu-items {
-  @apply flex-col absolute right-1/2 translate-x-1/2 mt-3 p-7 sm:min-w-[300px] min-w-max rounded-xl bg-white border border-nav-border shadow-menu;
+  @apply flex-col absolute right-1/2 translate-x-1/2 mt-3 p-7 sm:min-w-[220px] min-w-max rounded-xl bg-white border border-nav-border shadow-menu;
 }
 
 /* Profile Card */

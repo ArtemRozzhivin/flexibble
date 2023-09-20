@@ -25,9 +25,11 @@ const makeGraphQLRequest = async (query: string, variables = {}) => {
 };
 
 export const getUser = (email: string) => {
+  client.setHeader('x-api-key', apiGrafbaseKey);
   return makeGraphQLRequest(getUserQuery, { email });
 };
 
 export const createUser = (name: string, email: string, avatarUrl: string) => {
+  client.setHeader('x-api-key', apiGrafbaseKey);
   return makeGraphQLRequest(createUserMutation, { name, email, avatarUrl });
 };
