@@ -90,7 +90,7 @@ body {
 
 /* Custom Menu */
 .custom_menu-btn {
-  @apply gap-4 w-full rounded-md bg-light-white-100 p-4 text-base outline-none capitalize;
+  @apply w-full rounded-md bg-light-white-100 p-4 text-base outline-none capitalize;
 }
 
 .custom_menu-items {
@@ -116,6 +116,10 @@ body {
 
 /* Form Field */
 .form_field-input {
+  @apply w-full outline-0 bg-light-white-100 rounded-xl p-4;
+}
+
+.form_field-area {
   @apply w-full outline-0 bg-light-white-100 rounded-xl p-4;
 }
 
@@ -145,19 +149,27 @@ body {
 
 /* Project Form */
 .form {
-  @apply flex-col w-full lg:pt-24 pt-12 gap-10 text-lg max-w-5xl mx-auto;
+  @apply flex-col w-full lg:py-24 py-12 gap-10 text-lg max-w-5xl mx-auto;
 }
 
 .form_image-container {
-  @apply w-full lg:min-h-[400px] min-h-[200px] relative;
+  @apply w-full lg:min-h-[300px] min-h-[150px] relative;
 }
 
 .form_image-label {
-  @apply z-10 text-center w-full h-full p-20 text-gray-100 border-2 border-gray-50 border-dashed;
+  @apply z-10 absolute top-0 left-0 flex justify-center items-center text-center w-full h-full p-20 text-gray-100 border-2 border-gray-50 border-dashed;
 }
 
 .form_image-input {
   @apply absolute z-30 w-full opacity-0 h-full cursor-pointer;
+}
+
+.form_submit-btn {
+  @apply rounded-lg text-white bg-green-600 py-4 px-8 text-base outline-none capitalize;
+}
+
+.form_cancel-btn {
+  @apply rounded-lg text-white bg-red-600 py-4 px-8 text-base outline-none capitalize;
 }
 
 /* Profile Projects */
