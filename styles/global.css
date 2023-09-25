@@ -134,7 +134,7 @@ body {
 
 /* Navbar */
 .navbar {
-  @apply py-5 px-32 border-b border-nav-border gap-4;
+  @apply bg-white py-5 px-32 border-b border-nav-border gap-4;
 }
 
 /* Profile Menu */
@@ -165,7 +165,7 @@ body {
 }
 
 .form_submit-btn {
-  @apply rounded-lg text-white bg-green-600 py-4 px-8 text-base outline-none capitalize;
+  @apply rounded-lg text-white bg-green-600 py-4 px-8 text-base outline-none capitalize disabled:brightness-50;
 }
 
 .form_cancel-btn {
