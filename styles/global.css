@@ -164,10 +164,6 @@ body {
   @apply absolute z-30 w-full opacity-0 h-full cursor-pointer;
 }
 
-.form_submit-btn {
-  @apply rounded-lg text-white bg-green-600 py-4 px-8 text-base outline-none capitalize disabled:brightness-50;
-}
-
 .form_cancel-btn {
   @apply rounded-lg text-white bg-red-600 py-4 px-8 text-base outline-none capitalize;
 }

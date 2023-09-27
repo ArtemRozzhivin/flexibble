@@ -5,10 +5,20 @@ import Image from 'next/image';
 import FormField from './FormField';
 import { categoryFilters } from '@constants';
 import Dropdown from './Category';
+import Button from './Button';
+
+export type ProjectFormType = {
+  image: string;
+  title: string;
+  description: string;
+  liveSiteUrl: string;
+  githubUrl: string;
+  category: string;
+};
 
 const ProjectForm = () => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const [form, setForm] = React.useState({
+  const [form, setForm] = React.useState<ProjectFormType>({
     image: '',
     title: '',
     description: '',
@@ -20,7 +30,14 @@ const ProjectForm = () => {
   const handleSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    setIsSubmitting(true);
+
+    try {
+    } catch (error) {}
+
     console.log(form);
+
+    setIsSubmitting(false);
   };
 
   const handleChangeForm = (name: string, value: string) => {
@@ -100,9 +117,9 @@ const ProjectForm = () => {
       </div>
 
       <div className='flexCenter '>
-        <button className='form_submit-btn' type='submit'>
-          Create
-        </button>
+        <Button pirmary leftIcon={isSubmitting ? '' : '/plus.svg'} type='submit'>
+          {isSubmitting ? 'Creating...' : 'Create'}
+        </Button>
       </div>
     </form>
   );
