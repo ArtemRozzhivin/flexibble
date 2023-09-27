@@ -63,3 +63,13 @@ export const createNewProject = async (form: ProjectFormType, userId: string, to
 
   return makeGraphQLRequest(createProjectMutation, variables);
 };
+
+export const fetchToken = async () => {
+  try {
+    const result = await fetch(`${serverUrl}/api/auth/token`);
+
+    return result.json();
+  } catch (error) {
+    throw error;
+  }
+};

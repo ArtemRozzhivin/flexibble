@@ -6,6 +6,12 @@ import FormField from './FormField';
 import { categoryFilters } from '@constants';
 import Dropdown from './Category';
 import Button from './Button';
+import { createNewProject, fetchToken } from '@lib/actions';
+import { SessionInterface } from '@common.types';
+
+interface IProjectForm {
+  session: SessionInterface;
+}
 
 export type ProjectFormType = {
   image: string;
@@ -16,7 +22,7 @@ export type ProjectFormType = {
   category: string;
 };
 
-const ProjectForm = () => {
+const ProjectForm = ({ session }: IProjectForm) => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [form, setForm] = React.useState<ProjectFormType>({
     image: '',
@@ -27,12 +33,14 @@ const ProjectForm = () => {
     category: '',
   });
 
-  const handleSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     setIsSubmitting(true);
 
     try {
+      const token = await fetchToken();
+      const result = createNewProject(form, session.user.id, token);
     } catch (error) {}
 
     console.log(form);
