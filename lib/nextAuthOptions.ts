@@ -1,6 +1,7 @@
 import { SessionInterface, UserProfile } from '@common.types';
 import { auth } from '@grafbase/sdk';
-import NextAuth, { NextAuthOptions, User, getServerSession } from 'next-auth';
+import NextAuth, { NextAuthOptions, User } from 'next-auth';
+import { getServerSession } from 'next-auth/next';
 import { AdapterUser } from 'next-auth/adapters';
 import GoogleProvider from 'next-auth/providers/google';
 import { createUser, getUser } from './actions';
@@ -43,13 +44,19 @@ export const authOptions: NextAuthOptions = {
 
   callbacks: {
     async signIn({ user }: { user: AdapterUser | User }) {
+      console.log('USEEEEEEEER', user);
       try {
         // if user exists, return true to allow sign in
         const userExists = (await getUser(user?.email as string)) as { user?: UserProfile };
 
         // if user does not exist, return false to disallow sign in
         if (!userExists.user) {
-          await createUser(user.name as string, user.email as string, user.image as string);
+          await createUser(
+            user.id as string,
+            user.name as string,
+            user.email as string,
+            user.image as string,
+          );
         }
 
         return true;

@@ -157,11 +157,11 @@ body {
 }
 
 .form_image-label {
-  @apply z-10 absolute top-0 left-0 flex justify-center items-center text-center w-full h-full p-20 text-gray-100 border-2 border-gray-50 border-dashed;
+  @apply absolute top-0 left-0 flex justify-center items-center text-center w-full h-full p-20 text-gray-100 border-2 border-gray-50 border-dashed;
 }
 
 .form_image-input {
-  @apply absolute z-30 w-full opacity-0 h-full cursor-pointer;
+  @apply absolute w-full opacity-0 h-full cursor-pointer;
 }
 
 .form_cancel-btn {

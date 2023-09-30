@@ -8,6 +8,7 @@ import Dropdown from './Category';
 import Button from './Button';
 import { createNewProject, fetchToken } from '@lib/actions';
 import { SessionInterface } from '@common.types';
+import { useRouter } from 'next/navigation';
 
 interface IProjectForm {
   session: SessionInterface;
@@ -23,6 +24,7 @@ export type ProjectFormType = {
 };
 
 const ProjectForm = ({ session }: IProjectForm) => {
+  const router = useRouter();
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [form, setForm] = React.useState<ProjectFormType>({
     image: '',
@@ -33,6 +35,8 @@ const ProjectForm = ({ session }: IProjectForm) => {
     category: '',
   });
 
+  console.log('SESSION USER', session?.user);
+
   const handleSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -40,12 +44,16 @@ const ProjectForm = ({ session }: IProjectForm) => {
 
     try {
       const token = await fetchToken();
-      const result = createNewProject(form, session.user.id, token);
-    } catch (error) {}
+      await createNewProject(form, session?.user?.id, token);
+      // console.log('RESULT', result);
+      // router.push('/');
+    } catch (error) {
+      alert(error);
+    } finally {
+      setIsSubmitting(false);
+    }
 
-    console.log(form);
-
-    setIsSubmitting(false);
+    // console.log(form);
   };
 
   const handleChangeForm = (name: string, value: string) => {
