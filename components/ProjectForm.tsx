@@ -45,7 +45,7 @@ const ProjectForm = ({ session }: IProjectForm) => {
     try {
       const token = await fetchToken();
       await createNewProject(form, session?.user?.id, token);
-      // console.log('RESULT', result);
+      console.log('INFO', form, session?.user?.id, token);
       // router.push('/');
     } catch (error) {
       alert(error);
