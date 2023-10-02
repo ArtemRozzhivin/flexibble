@@ -4,7 +4,7 @@ import React from 'react';
 
 const Main = () => {
   return (
-    <section className='flex flex-col gap-5 mt-16'>
+    <section className='flex flex-col gap-5 mt-16 px-32'>
       <h2>Category</h2>
       <ProjectList />
       <h2>Other load</h2>
