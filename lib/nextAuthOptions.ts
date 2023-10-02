@@ -47,7 +47,6 @@ export const authOptions: NextAuthOptions = {
       try {
         // if user exists, return true to allow sign in
         const userExists = (await getUser(user?.email as string)) as { user?: UserProfile };
-        console.log('userExists', !userExists.user);
 
         // if user does not exist, return false to disallow sign in
         if (!userExists.user) {

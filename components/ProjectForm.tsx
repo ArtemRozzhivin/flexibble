@@ -7,26 +7,17 @@ import { categoryFilters } from '@constants';
 import Dropdown from './Category';
 import Button from './Button';
 import { createNewProject, fetchToken } from '@lib/actions';
-import { SessionInterface } from '@common.types';
+import { FormState, SessionInterface } from '@common.types';
 import { useRouter } from 'next/navigation';
 
 interface IProjectForm {
   session: SessionInterface;
 }
 
-export type ProjectFormType = {
-  image: string;
-  title: string;
-  description: string;
-  liveSiteUrl: string;
-  githubUrl: string;
-  category: string;
-};
-
 const ProjectForm = ({ session }: IProjectForm) => {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const [form, setForm] = React.useState<ProjectFormType>({
+  const [form, setForm] = React.useState<FormState>({
     image: '',
     title: '',
     description: '',
@@ -34,8 +25,6 @@ const ProjectForm = ({ session }: IProjectForm) => {
     githubUrl: '',
     category: '',
   });
-
-  console.log('SESSION USER', session?.user);
 
   const handleSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -45,15 +34,12 @@ const ProjectForm = ({ session }: IProjectForm) => {
     try {
       const token = await fetchToken();
       await createNewProject(form, session?.user?.id, token);
-      console.log('INFO', form, session?.user?.id, token);
-      // router.push('/');
+      router.push('/');
     } catch (error) {
       alert(error);
     } finally {
       setIsSubmitting(false);
     }
-
-    // console.log(form);
   };
 
   const handleChangeForm = (name: string, value: string) => {

@@ -1,5 +1,11 @@
-import { ProjectFormType } from '@components/ProjectForm';
-import { createProjectMutation, createUserMutation, getUserQuery } from '@graphql';
+import { ProjectForm } from '@common.types';
+import {
+  allProjectsQuery,
+  createProjectMutation,
+  createUserMutation,
+  getUserQuery,
+  projectsQuery,
+} from '@graphql';
 import { GraphQLClient } from 'graphql-request';
 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -48,7 +54,7 @@ export const uploadImage = async (imagePath: string) => {
   }
 };
 
-export const createNewProject = async (form: ProjectFormType, creatorId: string, token: string) => {
+export const createNewProject = async (form: ProjectForm, creatorId: string, token: string) => {
   const imageUrl = await uploadImage(form.image);
 
   if (imageUrl.url) {
@@ -64,10 +70,16 @@ export const createNewProject = async (form: ProjectFormType, creatorId: string,
       },
     };
 
-    console.log('VARIABLES', variables);
-
     return makeGraphQLRequest(createProjectMutation, variables);
   }
+};
+
+export const fetchAllProjects = async (category?: string | null, endcursor?: string | null) => {
+  client.setHeader('x-api-key', apiGrafbaseKey);
+
+  console.log('category', category, 'endcursor', endcursor);
+  return makeGraphQLRequest(projectsQuery, { category, endcursor });
+  // return makeGraphQLRequest(allProjectsQuery);
 };
 
 export const fetchToken = async () => {

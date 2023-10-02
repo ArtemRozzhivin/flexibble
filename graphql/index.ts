@@ -84,6 +84,30 @@ export const projectsQuery = `
   }
 `;
 
+export const allProjectsQuery = `
+query ProjectCollection($first: Int = 8) {
+  projectCollection(first: $first) {
+    edges {
+      node {
+        title
+        description
+        githubUrl
+        liveSiteUrl
+        category
+        image
+        createdBy {
+          name
+          email
+        }
+        id
+        updatedAt
+        createdAt
+      }
+    }
+  }
+}
+`;
+
 export const getProjectByIdQuery = `
   query GetProjectById($id: ID!) {
     project(by: { id: $id }) {
