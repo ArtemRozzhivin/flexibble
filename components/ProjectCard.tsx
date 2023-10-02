@@ -1,4 +1,6 @@
 import { ProjectInterface } from '@common.types';
+import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 // interface IProjectCard {
@@ -14,6 +16,7 @@ import React from 'react';
 // }
 
 const ProjectCard = ({
+  id,
   title,
   image,
   category,
@@ -24,7 +27,19 @@ const ProjectCard = ({
   createdAt,
   updatedAt,
 }: ProjectInterface) => {
-  return <div className='flexCenter flex-col rounded-2xl drop-shadow-2xl'>ProjectCard</div>;
+  return (
+    <div className='flexCenter flex-col rounded-2xl drop-shadow-2xl'>
+      <Link href={`/project/${id}`}>
+        <Image
+          src={image}
+          width={414}
+          height={314}
+          className='w-full h-full object-cover rounded-2xl'
+          alt='Project Image'
+        />
+      </Link>
+    </div>
+  );
 };
 
 export default ProjectCard;

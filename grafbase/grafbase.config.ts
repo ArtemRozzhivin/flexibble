@@ -25,7 +25,7 @@ const Project = g
     liveSiteUrl: g.url(),
     category: g.string().search(),
     image: g.url(),
-    createdBy: g.relation(() => User),
+    createdBy: g.relation(() => User).optional(),
   })
   .auth((rules) => {
     rules.public().read();

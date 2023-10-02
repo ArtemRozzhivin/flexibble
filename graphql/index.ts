@@ -54,7 +54,7 @@ export const createUserMutation = `
 	}
 `;
 
-export const projectsQuery = `
+export const projectsQueryByCategory = `
   query getProjects($category: String, $endcursor: String) {
     projectSearch(first: 8, after: $endcursor, filter: {category: {eq: $category}}) {
       pageInfo {
@@ -78,35 +78,76 @@ export const projectsQuery = `
             name
             avatarUrl
           }
+          createdAt
+          updatedAt
         }
       }
     }
   }
 `;
 
-export const allProjectsQuery = `
-query ProjectCollection($first: Int = 8) {
-  projectCollection(first: $first) {
-    edges {
-      node {
-        title
-        description
-        githubUrl
-        liveSiteUrl
-        category
-        image
-        createdBy {
-          name
-          email
+export const projectsQuery = `
+  query getProjects($endcursor: String) {
+    projectSearch(first: 8, after: $endcursor) {
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
+      }
+      edges {
+        node {
+          title
+          githubUrl
+          description
+          liveSiteUrl
+          id
+          image
+          category
+          createdBy {
+            id
+            email
+            name
+            avatarUrl
+          }
+          createdAt
+          updatedAt
         }
-        id
-        updatedAt
-        createdAt
       }
     }
   }
-}
 `;
+
+// export const allProjectsQuery = `
+// query ProjectCollection($first: Int = 8, $endcursor: String) {
+//   projectCollection(first: $first, after: $endcursor) {
+//     pageInfo {
+//       hasPreviousPage
+//       hasNextPage
+//       startCursor
+//       endCursor
+//     }
+//     edges {
+//       node {
+//         title
+//         description
+//         githubUrl
+//         liveSiteUrl
+//         category
+//         image
+//         createdBy {
+//           name
+//           email
+//           avatarUrl
+//           id
+//         }
+//         updatedAt
+//         createdAt
+//       }
+//     }
+//   }
+// }
+// `;
 
 export const getProjectByIdQuery = `
   query GetProjectById($id: ID!) {

@@ -50,8 +50,8 @@ const ProjectList = () => {
 
   return (
     <section className='projects-grid'>
-      {projectList.map(({ node }) => (
-        <ProjectCard {...node} />
+      {projectList.map((project) => (
+        <ProjectCard {...project.node} />
       ))}
     </section>
   );

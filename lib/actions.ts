@@ -1,10 +1,10 @@
 import { ProjectForm } from '@common.types';
 import {
-  allProjectsQuery,
   createProjectMutation,
   createUserMutation,
   getUserQuery,
   projectsQuery,
+  projectsQueryByCategory,
 } from '@graphql';
 import { GraphQLClient } from 'graphql-request';
 
@@ -78,8 +78,10 @@ export const fetchAllProjects = async (category?: string | null, endcursor?: str
   client.setHeader('x-api-key', apiGrafbaseKey);
 
   console.log('category', category, 'endcursor', endcursor);
-  return makeGraphQLRequest(projectsQuery, { category, endcursor });
-  // return makeGraphQLRequest(allProjectsQuery);
+
+  if (category) return makeGraphQLRequest(projectsQueryByCategory, { category, endcursor });
+
+  return makeGraphQLRequest(projectsQuery, { endcursor });
 };
 
 export const fetchToken = async () => {
