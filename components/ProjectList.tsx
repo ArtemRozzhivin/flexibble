@@ -9,24 +9,14 @@ interface IProjectItem {
   node: ProjectInterface;
 }
 
-// interface IFetchProject {
-//   data: {
-//     projectCollection: {
-//       edges: IProjectItem[];
-//     };
-//   };
-// }
-
 interface IFetchSearch {
-  data: {
-    projectSearch: {
-      edges: IProjectItem[];
-      pageInfo: {
-        endCursor: string;
-        startCursor: string;
-        hasNextPage: boolean;
-        hasPreviousPage: boolean;
-      };
+  projectSearch: {
+    edges: IProjectItem[];
+    pageInfo: {
+      endCursor: string;
+      startCursor: string;
+      hasNextPage: boolean;
+      hasPreviousPage: boolean;
     };
   };
 }
@@ -36,12 +26,10 @@ const ProjectList = () => {
 
   useEffect(() => {
     const fetchProjects = async () => {
-      const response = (await fetchAllProjects()) as IFetchSearch;
+      const data = (await fetchAllProjects()) as IFetchSearch;
+      const result = data?.projectSearch?.edges || [];
 
-      const result = response?.data?.projectSearch?.edges || [];
-
-      console.log(result);
-      //@ts-ignore
+      console.log('RESULT', result);
       setProjectList(result);
     };
 
@@ -50,8 +38,8 @@ const ProjectList = () => {
 
   return (
     <section className='projects-grid'>
-      {projectList.map((project) => (
-        <ProjectCard {...project.node} />
+      {projectList.map(({ node }) => (
+        <ProjectCard key={node.id} {...node} />
       ))}
     </section>
   );

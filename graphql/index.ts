@@ -118,37 +118,6 @@ export const projectsQuery = `
   }
 `;
 
-// export const allProjectsQuery = `
-// query ProjectCollection($first: Int = 8, $endcursor: String) {
-//   projectCollection(first: $first, after: $endcursor) {
-//     pageInfo {
-//       hasPreviousPage
-//       hasNextPage
-//       startCursor
-//       endCursor
-//     }
-//     edges {
-//       node {
-//         title
-//         description
-//         githubUrl
-//         liveSiteUrl
-//         category
-//         image
-//         createdBy {
-//           name
-//           email
-//           avatarUrl
-//           id
-//         }
-//         updatedAt
-//         createdAt
-//       }
-//     }
-//   }
-// }
-// `;
-
 export const getProjectByIdQuery = `
   query GetProjectById($id: ID!) {
     project(by: { id: $id }) {

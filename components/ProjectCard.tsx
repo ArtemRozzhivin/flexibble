@@ -28,7 +28,7 @@ const ProjectCard = ({
   updatedAt,
 }: ProjectInterface) => {
   return (
-    <div className='flexCenter flex-col rounded-2xl drop-shadow-2xl'>
+    <div className='flexCenter flex-col rounded-2xl drop-shadow-lg'>
       <Link href={`/project/${id}`}>
         <Image
           src={image}
