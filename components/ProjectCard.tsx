@@ -38,14 +38,17 @@ const ProjectCard = ({
   }, []);
 
   return (
-    <div className='flexCenter flex-col rounded-2xl drop-shadow-lg'>
-      <Link className='flexCenter group relative w-full h-full' href={`/project/${id}`}>
+    <div className='flexCenter flex-col rounded-2xl drop-shadow-card'>
+      <Link
+        scroll={true}
+        href={`/project/${id}`}
+        className='flexCenter group relative w-full h-full'>
         <Image
           src={image}
           width={414}
           height={314}
           className='w-full h-full object-cover rounded-2xl'
-          alt='Project Image'
+          alt='project image'
         />
 
         <div className='hidden group-hover:flex profile_card-title'>
@@ -53,40 +56,28 @@ const ProjectCard = ({
         </div>
       </Link>
 
-      <div className='flexBetween px-2 mt-3 w-full font-semibold text-sm'>
+      <div className='flexBetween w-full px-2 mt-3 font-semibold text-sm'>
         <Link href={`/profile/${createdBy?.id}`}>
           <div className='flexCenter gap-2'>
             <Image
-              className='rounded-full'
               src={createdBy?.avatarUrl}
-              width={35}
-              height={35}
-              alt='Avtor Image'
+              width={24}
+              height={24}
+              className='rounded-full'
+              alt='profile image'
             />
-            <span>{createdBy?.name}</span>
+            <p>{createdBy?.name}</p>
           </div>
         </Link>
 
-        <div className='flexBetween gap-5'>
+        <div className='flexCenter gap-3'>
           <div className='flexCenter gap-2'>
-            <Image
-              className='rounded-full'
-              src='/hearth.svg'
-              width={20}
-              height={20}
-              alt='Like Image'
-            />
-            <span>{randomLikes}</span>
+            <Image src='/hearth.svg' width={13} height={12} alt='heart' />
+            <p className='text-sm'>{randomLikes}</p>
           </div>
           <div className='flexCenter gap-2'>
-            <Image
-              className='rounded-full'
-              src='/eye.svg'
-              width={20}
-              height={20}
-              alt='Views Image'
-            />
-            <span>{randomViews}</span>
+            <Image src='/eye.svg' width={12} height={9} alt='eye' />
+            <p className='text-sm'>{randomViews}</p>
           </div>
         </div>
       </div>

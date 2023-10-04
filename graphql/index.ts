@@ -65,21 +65,15 @@ export const projectsQueryByCategory = `
       }
       edges {
         node {
-          title
-          githubUrl
-          description
-          liveSiteUrl
           id
+          title
           image
           category
           createdBy {
             id
-            email
             name
             avatarUrl
           }
-          createdAt
-          updatedAt
         }
       }
     }
@@ -88,7 +82,7 @@ export const projectsQueryByCategory = `
 
 export const projectsQuery = `
   query getProjects($endcursor: String) {
-    projectSearch(first: 8, after: $endcursor) {
+    projectSearch(first: 10, after: $endcursor) {
       pageInfo {
         hasNextPage
         hasPreviousPage
@@ -97,21 +91,15 @@ export const projectsQuery = `
       }
       edges {
         node {
-          title
-          githubUrl
-          description
-          liveSiteUrl
           id
+          title
           image
           category
           createdBy {
             id
-            email
             name
             avatarUrl
           }
-          createdAt
-          updatedAt
         }
       }
     }
@@ -119,21 +107,25 @@ export const projectsQuery = `
 `;
 
 export const getProjectByIdQuery = `
-  query GetProjectById($id: ID!) {
+  query Project($id: ID!) {
     project(by: { id: $id }) {
       id
       title
       description
-      image
-      liveSiteUrl
       githubUrl
+      liveSiteUrl
       category
+      image
       createdBy {
-        id
         name
         email
         avatarUrl
+        description
+        githubUrl
+        linkedinUrl
       }
+      updatedAt
+      createdAt
     }
   }
 `;
