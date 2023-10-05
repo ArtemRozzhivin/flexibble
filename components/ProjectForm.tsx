@@ -9,22 +9,31 @@ import Button from './Button';
 import { createNewProject, fetchToken } from '@lib/actions';
 import { FormState, SessionInterface } from '@common.types';
 import { useRouter } from 'next/navigation';
+import { type } from 'os';
 
 interface IProjectForm {
   session: SessionInterface;
+  type: 'create' | 'edit';
+  projectForm?: FormState;
 }
 
-const ProjectForm = ({ session }: IProjectForm) => {
+const ProjectForm = ({ session, type, projectForm }: IProjectForm) => {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const [form, setForm] = React.useState<FormState>({
-    image: '',
-    title: '',
-    description: '',
-    liveSiteUrl: '',
-    githubUrl: '',
-    category: '',
-  });
+  const [form, setForm] = React.useState<FormState>(
+    type === 'create'
+      ? {
+          image: '',
+          title: '',
+          description: '',
+          liveSiteUrl: '',
+          githubUrl: '',
+          category: '',
+        }
+      : (projectForm as FormState),
+  );
+
+  console.log('FORM', form);
 
   const handleSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -86,9 +95,16 @@ const ProjectForm = ({ session }: IProjectForm) => {
         />
       </div>
 
-      <FormField onChange={handleChangeForm} name='title' placeholder='Flexibble' required />
+      <FormField
+        value={form.title}
+        onChange={handleChangeForm}
+        name='title'
+        placeholder='Flexibble'
+        required
+      />
 
       <FormField
+        value={form.description}
         onChange={handleChangeForm}
         name='description'
         placeholder='Flexibble'
@@ -97,6 +113,7 @@ const ProjectForm = ({ session }: IProjectForm) => {
       />
 
       <FormField
+        value={form.liveSiteUrl}
         onChange={handleChangeForm}
         name='liveSiteUrl'
         placeholder='https://flexibble.com'
@@ -104,6 +121,7 @@ const ProjectForm = ({ session }: IProjectForm) => {
       />
 
       <FormField
+        value={form.githubUrl}
         onChange={handleChangeForm}
         name='githubUrl'
         placeholder='https://github.com/ArtemRozzhivin/flexibble'

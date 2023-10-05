@@ -11,6 +11,7 @@ interface ButtonType {
   type: 'button' | 'submit' | 'reset';
   pirmary?: boolean;
   border?: boolean;
+  remove?: boolean;
 }
 
 const Button: React.FC<ButtonType> = ({
@@ -22,17 +23,20 @@ const Button: React.FC<ButtonType> = ({
   type,
   pirmary,
   border,
+  remove,
 }) => {
   return (
     <button
       type={type}
       className={cx(
-        'inline-flex justify-center items-center py-4 px-8 gap-2 rounded-xl transition-all',
+        'inline-flex justify-center items-center py-3 px-6 gap-2 rounded-xl transition-all',
         {
           'text-white bg-purple-600 text-base outline-none capitalize disabled:brightness-50 hover:brightness-75':
             pirmary,
           'border-solid border-2 text-purple-600 rounded-2xl border-purple-600 hover:text-white hover:bg-purple-600 transition-all':
             border,
+          'text-white bg-purple-600 text-base outline-none capitalize disabled:brightness-50 hover:bg-red-600':
+            remove,
         },
         className,
       )}

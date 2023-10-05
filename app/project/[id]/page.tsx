@@ -3,6 +3,7 @@ import Button from '@components/Button';
 import Modal from '@components/Modal';
 import RelatedProjects from '@components/RelatedProjects';
 import { fetchProjectDetailsById } from '@lib/actions';
+import { getCurrentSession } from '@lib/nextAuthOptions';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
@@ -14,11 +15,16 @@ type ProjectDetails = {
 
 const ProjectPage = async ({ params }: { params: { id: string } }) => {
   const { project } = (await fetchProjectDetailsById(params.id)) as ProjectDetails;
+  const session = await getCurrentSession();
+
+  const isOwner = session.user.id === project.createdBy?.id;
+
+  console.log(project);
 
   return (
     <div className='mt-20'>
       <Modal>
-        <section className='w-full flexStart'>
+        <section className='w-full flexBetween'>
           <div className='flexCenter gap-5'>
             <Image
               className='rounded-full'
@@ -36,6 +42,18 @@ const ProjectPage = async ({ params }: { params: { id: string } }) => {
               </p>
             </div>
           </div>
+          {isOwner && (
+            <div className='flexCenter gap-5'>
+              <Link href={`/edit-project/${params.id}`}>
+                <Button type='button' pirmary>
+                  <Image src='/pencile.svg' width={20} height={20} alt='edit' />
+                </Button>
+              </Link>
+              <Button type='button' remove>
+                <Image src='/trash.svg' width={20} height={20} alt='delete' />
+              </Button>
+            </div>
+          )}
         </section>
 
         <section className='mt-14'>

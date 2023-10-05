@@ -5,6 +5,7 @@ import React from 'react';
 import AuthProviders from './AuthProviders';
 import { getCurrentSession } from '@lib/nextAuthOptions';
 import ProfileMenu from './ProfileMenu';
+import Button from './Button';
 
 // because we are using next, so we make this function async
 const Nav = async () => {
@@ -29,7 +30,11 @@ const Nav = async () => {
       <div>
         {session ? (
           <div className='flexCenter gap-5'>
-            <Link href='/create-project'>ShareWork</Link>
+            <Link href='/create-project'>
+              <Button type='button' pirmary>
+                ShareWork
+              </Button>
+            </Link>
             {session?.user?.image && <ProfileMenu session={session} />}
           </div>
         ) : (
