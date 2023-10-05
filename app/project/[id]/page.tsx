@@ -79,19 +79,7 @@ const ProjectPage = async ({ params }: { params: { id: string } }) => {
           <span className='w-full h-[1px] bg-light-white-200'></span>
         </section>
 
-        <section className='flex flex-col gap-10 w-full mt-20'>
-          <div className='flexBetween'>
-            <p>
-              More by <span className='text-purple-600 text-lg'>{project.createdBy?.name}</span>
-            </p>
-
-            <Button type='button' border>
-              View all
-            </Button>
-          </div>
-
-          <RelatedProjects userId={project.createdBy?.id} />
-        </section>
+        <RelatedProjects userId={project.createdBy?.id} projectId={params.id} />
       </Modal>
     </div>
   );
