@@ -60,7 +60,7 @@ const ProjectCard = ({
         <Link href={`/profile/${createdBy?.id}`}>
           <div className='flexCenter gap-2'>
             <Image
-              src={createdBy?.avatarUrl}
+              src={createdBy ? createdBy?.avatarUrl : '/user.svg'}
               width={24}
               height={24}
               className='rounded-full'

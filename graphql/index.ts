@@ -117,6 +117,7 @@ export const getProjectByIdQuery = `
       category
       image
       createdBy {
+        id
         name
         email
         avatarUrl
@@ -144,16 +145,13 @@ export const getUserQuery = `
   }
 `;
 
-export const getProjectsOfUserQuery = `
+export const getUserByIdQuery = `
   query getUserProjects($id: ID!, $last: Int = 4) {
     user(by: { id: $id }) {
       id
       name
       email
-      description
       avatarUrl
-      githubUrl
-      linkedinUrl
       projects(last: $last) {
         edges {
           node {

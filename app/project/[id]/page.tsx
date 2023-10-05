@@ -1,6 +1,7 @@
 import { ProjectInterface } from '@common.types';
 import Button from '@components/Button';
 import Modal from '@components/Modal';
+import RelatedProjects from '@components/RelatedProjects';
 import { fetchProjectDetailsById } from '@lib/actions';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -13,8 +14,6 @@ type ProjectDetails = {
 
 const ProjectPage = async ({ params }: { params: { id: string } }) => {
   const { project } = (await fetchProjectDetailsById(params.id)) as ProjectDetails;
-
-  console.log(project);
 
   return (
     <div className='mt-20'>
@@ -49,9 +48,8 @@ const ProjectPage = async ({ params }: { params: { id: string } }) => {
           />
         </section>
 
-        <section className='flexCenter flex-col gap-5 text-center mt-14'>
+        <section className='flexCenter flex-col gap-10 text-center mt-14'>
           <p className=''>{project.description}</p>
-          <div className='w-full h-[2px] bg-slate-300'></div>
           <div className='text-lg font-semibold text-gray-500 flexBetween gap-10'>
             <Link className='flexCenter gap-2' href={project.githubUrl}>
               <Button type='button' pirmary>
@@ -67,6 +65,32 @@ const ProjectPage = async ({ params }: { params: { id: string } }) => {
               </Button>
             </Link>
           </div>
+        </section>
+
+        <section className='flexBetween w-full gap-20 mt-20'>
+          <span className='w-full h-[1px] bg-light-white-200'></span>
+          <Image
+            className='rounded-full'
+            src={project.createdBy?.avatarUrl}
+            width={90}
+            height={90}
+            alt='avatar'
+          />
+          <span className='w-full h-[1px] bg-light-white-200'></span>
+        </section>
+
+        <section className='flex flex-col gap-10 w-full mt-20'>
+          <div className='flexBetween'>
+            <p>
+              More by <span className='text-purple-600 text-lg'>{project.createdBy?.name}</span>
+            </p>
+
+            <Button type='button' border>
+              View all
+            </Button>
+          </div>
+
+          <RelatedProjects userId={project.createdBy?.id} />
         </section>
       </Modal>
     </div>
