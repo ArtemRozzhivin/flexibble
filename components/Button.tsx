@@ -13,6 +13,7 @@ interface ButtonType {
   border?: boolean;
   remove?: boolean;
   edit?: boolean;
+  disabled?: boolean;
 }
 
 const Button: React.FC<ButtonType> = ({
@@ -26,12 +27,14 @@ const Button: React.FC<ButtonType> = ({
   border,
   remove,
   edit,
+  disabled,
 }) => {
   return (
     <button
       type={type}
+      disabled={disabled}
       className={cx(
-        'inline-flex justify-center items-center py-3 px-6 gap-2 rounded-xl transition-all',
+        'inline-flex justify-center items-center py-3 px-6 gap-2 rounded-xl transition-all disabled:bg-slate-400 disabled:text-white disabled:cursor-not-allowed',
         {
           'text-white bg-purple-600 text-base outline-none capitalize disabled:brightness-50 hover:brightness-75':
             pirmary,

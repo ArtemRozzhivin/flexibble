@@ -2,6 +2,7 @@ import { ProjectForm } from '@common.types';
 import {
   createProjectMutation,
   createUserMutation,
+  deleteProjectMutation,
   getProjectByIdQuery,
   getUserByIdQuery,
   getUserQuery,
@@ -104,6 +105,12 @@ export const editProject = async (form: ProjectForm, projectId: string, token: s
   };
 
   return makeGraphQLRequest(updateProjectMutation, variables);
+};
+
+export const deleteProject = async (projectId: string, token: string) => {
+  client.setHeader('Authorization', `Bearer ${token}`);
+
+  return makeGraphQLRequest(deleteProjectMutation, { id: projectId });
 };
 
 export const fetchAllProjects = async (category?: string | null, endcursor?: string | null) => {
