@@ -12,6 +12,7 @@ interface ButtonType {
   pirmary?: boolean;
   border?: boolean;
   remove?: boolean;
+  edit?: boolean;
 }
 
 const Button: React.FC<ButtonType> = ({
@@ -24,6 +25,7 @@ const Button: React.FC<ButtonType> = ({
   pirmary,
   border,
   remove,
+  edit,
 }) => {
   return (
     <button
@@ -35,8 +37,10 @@ const Button: React.FC<ButtonType> = ({
             pirmary,
           'border-solid border-2 text-purple-600 rounded-2xl border-purple-600 hover:text-white hover:bg-purple-600 transition-all':
             border,
-          'text-white bg-purple-600 text-base outline-none capitalize disabled:brightness-50 hover:bg-red-600':
+          'py-3 px-3 text-white bg-purple-600 text-base outline-none capitalize disabled:brightness-50 hover:bg-red-600':
             remove,
+          'py-3 px-3 text-white bg-purple-600 text-base outline-none capitalize disabled:brightness-50 hover:brightness-75':
+            edit,
         },
         className,
       )}

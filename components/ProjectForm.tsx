@@ -6,32 +6,28 @@ import FormField from './FormField';
 import { categoryFilters } from '@constants';
 import Dropdown from './Category';
 import Button from './Button';
-import { createNewProject, fetchToken } from '@lib/actions';
-import { FormState, SessionInterface } from '@common.types';
+import { createNewProject, editProject, fetchToken } from '@lib/actions';
+import { FormState, ProjectInterface, SessionInterface } from '@common.types';
 import { useRouter } from 'next/navigation';
 import { type } from 'os';
 
 interface IProjectForm {
   session: SessionInterface;
   type: 'create' | 'edit';
-  projectForm?: FormState;
+  projectForm?: ProjectInterface;
 }
 
 const ProjectForm = ({ session, type, projectForm }: IProjectForm) => {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const [form, setForm] = React.useState<FormState>(
-    type === 'create'
-      ? {
-          image: '',
-          title: '',
-          description: '',
-          liveSiteUrl: '',
-          githubUrl: '',
-          category: '',
-        }
-      : (projectForm as FormState),
-  );
+  const [form, setForm] = React.useState<FormState>({
+    image: projectForm?.image || '',
+    title: projectForm?.title || '',
+    description: projectForm?.description || '',
+    liveSiteUrl: projectForm?.liveSiteUrl || '',
+    githubUrl: projectForm?.githubUrl || '',
+    category: projectForm?.category || '',
+  });
 
   console.log('FORM', form);
 
@@ -42,7 +38,12 @@ const ProjectForm = ({ session, type, projectForm }: IProjectForm) => {
 
     try {
       const token = await fetchToken();
-      await createNewProject(form, session?.user?.id, token);
+      if (type === 'create') {
+        await createNewProject(form, session?.user?.id, token);
+      } else {
+        await editProject(form, projectForm?.id as string, token);
+      }
+
       router.push('/');
     } catch (error) {
       alert(error);
@@ -86,6 +87,7 @@ const ProjectForm = ({ session, type, projectForm }: IProjectForm) => {
           )}
         </label>
         <input
+          // value={form.image}
           onChange={handleLoadImage}
           name='image'
           className='form_image-input'
@@ -137,8 +139,25 @@ const ProjectForm = ({ session, type, projectForm }: IProjectForm) => {
       </div>
 
       <div className='flexCenter '>
-        <Button pirmary leftIcon={isSubmitting ? '' : '/plus.svg'} type='submit'>
-          {isSubmitting ? 'Creating...' : 'Create'}
+        <Button
+          pirmary
+          leftIcon={
+            type === 'create'
+              ? isSubmitting
+                ? ''
+                : '/plus.svg'
+              : isSubmitting
+              ? ''
+              : '/pencile.svg'
+          }
+          type='submit'>
+          {type === 'create'
+            ? isSubmitting
+              ? 'Creating...'
+              : 'Create'
+            : isSubmitting
+            ? 'Editing...'
+            : 'Edit'}
         </Button>
       </div>
     </form>

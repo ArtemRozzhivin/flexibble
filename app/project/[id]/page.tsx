@@ -43,9 +43,9 @@ const ProjectPage = async ({ params }: { params: { id: string } }) => {
             </div>
           </div>
           {isOwner && (
-            <div className='flexCenter gap-5'>
+            <div className='flexCenter gap-3'>
               <Link href={`/edit-project/${params.id}`}>
-                <Button type='button' pirmary>
+                <Button type='button' edit>
                   <Image src='/pencile.svg' width={20} height={20} alt='edit' />
                 </Button>
               </Link>

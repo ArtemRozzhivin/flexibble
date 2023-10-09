@@ -7,7 +7,9 @@ import {
   getUserQuery,
   projectsQuery,
   projectsQueryByCategory,
+  updateProjectMutation,
 } from '@graphql';
+import { isBase64Url } from '@utils';
 import { GraphQLClient } from 'graphql-request';
 
 const isProduction = process.env.NODE_ENV === 'production';
@@ -80,6 +82,28 @@ export const createNewProject = async (form: ProjectForm, creatorId: string, tok
 
     return makeGraphQLRequest(createProjectMutation, variables);
   }
+};
+
+export const editProject = async (form: ProjectForm, projectId: string, token: string) => {
+  client.setHeader('Authorization', `Bearer ${token}`);
+
+  let updatedForm = { ...form };
+  const isUrlBase64 = isBase64Url(form.image);
+
+  if (isUrlBase64) {
+    const newImage = await uploadImage(form.image);
+
+    if (newImage.url) {
+      updatedForm = { ...form, image: newImage.url };
+    }
+  }
+
+  const variables = {
+    id: projectId,
+    input: updatedForm,
+  };
+
+  return makeGraphQLRequest(updateProjectMutation, variables);
 };
 
 export const fetchAllProjects = async (category?: string | null, endcursor?: string | null) => {

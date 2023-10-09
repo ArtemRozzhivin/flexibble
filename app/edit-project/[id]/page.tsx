@@ -12,9 +12,9 @@ const EditProject = async ({ params }: { params: { id: string } }) => {
   console.log(project);
 
   return (
-    <div className='mt-20'>
+    <div className='mt-20 px-52 py-10'>
       {/* <Modal> */}
-      <h3 className='text-5xl'>Editing project</h3>
+      <h3 className='text-5xl font-bold'>Edit project</h3>
       <ProjectForm type='edit' session={session} projectForm={project} />
       {/* </Modal> */}
     </div>
