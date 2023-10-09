@@ -1,6 +1,7 @@
 import { ProjectInterface } from '@common.types';
 import Button from '@components/Button';
 import Modal from '@components/Modal';
+import ProjectActions from '@components/ProjectActions';
 import RelatedProjects from '@components/RelatedProjects';
 import { fetchProjectDetailsById } from '@lib/actions';
 import { getCurrentSession } from '@lib/nextAuthOptions';
@@ -42,18 +43,7 @@ const ProjectPage = async ({ params }: { params: { id: string } }) => {
               </p>
             </div>
           </div>
-          {isOwner && (
-            <div className='flexCenter gap-3'>
-              <Link href={`/edit-project/${params.id}`}>
-                <Button type='button' edit>
-                  <Image src='/pencile.svg' width={20} height={20} alt='edit' />
-                </Button>
-              </Link>
-              <Button type='button' remove>
-                <Image src='/trash.svg' width={20} height={20} alt='delete' />
-              </Button>
-            </div>
-          )}
+          {isOwner && <ProjectActions projectId={params.id} />}
         </section>
 
         <section className='mt-14'>
