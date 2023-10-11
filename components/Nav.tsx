@@ -12,7 +12,7 @@ const Nav = async () => {
   const session = await getCurrentSession();
 
   return (
-    <nav className='flexBetween navbar'>
+    <nav className='flexBetween navbar paddings'>
       <div className='flex-1 flexStart gap-10'>
         <Link href='/'>
           <Image src='/logo.svg' width={115} height={43} alt='Flexibble' />

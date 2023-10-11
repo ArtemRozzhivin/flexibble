@@ -26,7 +26,7 @@ const FooterColumn = ({ title, links }: FooterColumnProps) => (
 
 const Footer = () => {
   return (
-    <footer className='flexStart footer'>
+    <footer className='flexStart footer paddings'>
       <div className='flex flex-col gap-12 w-full'>
         <div className='flex items-start flex-col'>
           <Link href='/'>
