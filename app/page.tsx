@@ -1,14 +1,50 @@
+import { ProjectInterface } from '@common.types';
 import Categories from '@components/Categories';
+import Pagination from '@components/Pagination';
 import ProjectList from '@components/ProjectList';
-import { getCurrentSession } from '@lib/nextAuthOptions';
+import { fetchAllProjects } from '@lib/actions';
+import { useSearchParams } from 'next/navigation';
 import React from 'react';
 
-const Main = () => {
+interface IMain {
+  params: {
+    category: string;
+    endCursor: string;
+  };
+}
+
+export interface IProjectItem {
+  node: ProjectInterface;
+}
+
+interface IFetchSearch {
+  projectSearch: {
+    edges: IProjectItem[];
+    pageInfo: {
+      endCursor: string;
+      startCursor: string;
+      hasNextPage: boolean;
+      hasPreviousPage: boolean;
+    };
+  };
+}
+
+const Main = async ({ params: { category, endCursor } }: IMain) => {
+  const fetchProjects = async () => {
+    const data = (await fetchAllProjects(category)) as IFetchSearch;
+    const result = data?.projectSearch;
+
+    console.log('RESULT', result);
+    return result;
+  };
+
+  const { edges, pageInfo } = await fetchProjects();
+
   return (
     <section className='flex flex-col gap-5 mt-16 paddings'>
       <Categories />
-      <ProjectList />
-      <h2>Other load</h2>
+      <ProjectList projects={edges} />
+      <Pagination />
     </section>
   );
 };
