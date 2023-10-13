@@ -116,7 +116,12 @@ export const deleteProject = async (projectId: string, token: string) => {
 export const fetchAllProjects = async (category?: string | null, endcursor?: string | null) => {
   client.setHeader('x-api-key', apiGrafbaseKey);
 
-  if (category) return makeGraphQLRequest(projectsQueryByCategory, { category, endcursor });
+  console.log('CATEGORY', category);
+  console.log('ENDCURSOR', endcursor);
+
+  if (category) {
+    return makeGraphQLRequest(projectsQueryByCategory, { category, endcursor });
+  }
 
   return makeGraphQLRequest(projectsQuery, { endcursor });
 };

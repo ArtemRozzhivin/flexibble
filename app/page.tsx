@@ -7,9 +7,9 @@ import { useSearchParams } from 'next/navigation';
 import React from 'react';
 
 interface IMain {
-  params: {
+  searchParams: {
     category: string;
-    endCursor: string;
+    endcursor: string;
   };
 }
 
@@ -29,9 +29,16 @@ interface IFetchSearch {
   };
 }
 
-const Main = async ({ params: { category, endCursor } }: IMain) => {
+export const dynamic = 'force-dynamic';
+export const dynamicParams = true;
+export const revalidate = 0;
+
+const Main = async ({ searchParams }: IMain) => {
   const fetchProjects = async () => {
-    const data = (await fetchAllProjects(category)) as IFetchSearch;
+    const data = (await fetchAllProjects(
+      searchParams.category,
+      searchParams.endcursor,
+    )) as IFetchSearch;
     const result = data?.projectSearch;
 
     console.log('RESULT', result);
@@ -43,8 +50,12 @@ const Main = async ({ params: { category, endCursor } }: IMain) => {
   return (
     <section className='flex flex-col gap-5 mt-16 paddings'>
       <Categories />
-      <ProjectList projects={edges} />
-      <Pagination />
+      {edges.length === 0 ? (
+        <h3 className='no-result-text text-center'>No projects found, go to create some first.</h3>
+      ) : (
+        <ProjectList projects={edges} />
+      )}
+      <Pagination {...pageInfo} />
     </section>
   );
 };
