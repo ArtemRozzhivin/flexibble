@@ -103,6 +103,7 @@ const ProjectForm = ({ session, type, projectForm }: IProjectForm) => {
         name='title'
         placeholder='Flexibble'
         required
+        lable='Title'
       />
 
       <FormField
@@ -112,6 +113,7 @@ const ProjectForm = ({ session, type, projectForm }: IProjectForm) => {
         placeholder='Flexibble'
         isTextArea={true}
         required
+        lable='Description'
       />
 
       <FormField
@@ -120,6 +122,7 @@ const ProjectForm = ({ session, type, projectForm }: IProjectForm) => {
         name='liveSiteUrl'
         placeholder='https://flexibble.com'
         required
+        lable='Site URL'
       />
 
       <FormField
@@ -128,6 +131,7 @@ const ProjectForm = ({ session, type, projectForm }: IProjectForm) => {
         name='githubUrl'
         placeholder='https://github.com/ArtemRozzhivin/flexibble'
         required
+        lable='GitHub URL'
       />
 
       <div className='flexStart'>

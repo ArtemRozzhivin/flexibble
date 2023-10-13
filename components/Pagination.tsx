@@ -16,10 +16,12 @@ const Pagination = ({ endCursor, startCursor, hasNextPage, hasPreviousPage }: IP
   const router = useRouter();
 
   const hadnlePaginate = (direction: string) => {
+    console.log('DIRECTION', direction);
+    console.log('CURRENT PARAMS', currentParams.toString());
     if (direction === 'next' && hasNextPage) {
       currentParams.delete('startсursor');
       currentParams.set('endcursor', endCursor);
-    } else if (direction === 'previous' && hasPreviousPage) {
+    } else if (direction === 'fitst' && hasPreviousPage) {
       currentParams.delete('endcursor');
       currentParams.set('startcursor', startCursor);
     }
@@ -31,8 +33,8 @@ const Pagination = ({ endCursor, startCursor, hasNextPage, hasPreviousPage }: IP
   return (
     <div className='flexCenter gap-5 mt-10'>
       {hasPreviousPage && (
-        <Button onClick={() => hadnlePaginate('previous')} type='button' pirmary>
-          Previous
+        <Button onClick={() => hadnlePaginate('fitst')} type='button' pirmary>
+          Fitst
         </Button>
       )}
       {hasNextPage && (

@@ -5,18 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
-// interface IProjectCard {
-//   title: string;
-//   image: string;
-//   category: string;
-//   description: string;
-//   githubUrl: string;
-//   liveSiteUrl: string;
-//   createdBy: { name: string; email: string };
-//   createdAt: string;
-//   updatedAt: string;
-// }
-
 const ProjectCard = ({
   id,
   title,

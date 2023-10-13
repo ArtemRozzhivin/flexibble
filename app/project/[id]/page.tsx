@@ -39,7 +39,9 @@ const ProjectPage = async ({ params }: { params: { id: string } }) => {
               <p className='text-sm font-semibold text-gray-500 flexBetween gap-2'>
                 <p>{project.createdBy?.name}</p>
                 <Image width={10} height={10} src='/dot.svg' alt='Dot' />
-                <p className='text-purple-600'>{project.category}</p>
+                <Link href={`/?category=${project.category}`} className='text-purple-600'>
+                  {project.category}
+                </Link>
               </p>
             </div>
           </div>

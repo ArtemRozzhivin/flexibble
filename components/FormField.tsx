@@ -7,6 +7,7 @@ type FormFieldProps = {
   isTextArea?: boolean;
   onChange: (name: string, value: string) => void;
   required?: boolean;
+  lable?: string;
 };
 
 const FormField = ({
@@ -16,10 +17,11 @@ const FormField = ({
   isTextArea,
   onChange,
   required,
+  lable,
 }: FormFieldProps) => {
   return (
     <div className='flex flex-col gap-4'>
-      <label htmlFor={name}>{name}</label>
+      <label htmlFor={name}>{lable}</label>
 
       {isTextArea ? (
         <textarea
