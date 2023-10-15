@@ -13,7 +13,6 @@ interface IProfilePage {
 }
 
 const ProfilePage = ({ user }: IProfilePage) => {
-  console.log(user?.projects?.edges);
   return (
     <section className='flexCenter flex-col max-w-10xl w-full mx-auto paddings'>
       <section className='flexBetween max-lg:flex-col gap-10 w-full'>

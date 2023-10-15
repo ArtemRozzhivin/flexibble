@@ -41,7 +41,6 @@ const Main = async ({ searchParams }: IMain) => {
     )) as IFetchSearch;
     const result = data?.projectSearch;
 
-    console.log('RESULT', result);
     return result;
   };
 

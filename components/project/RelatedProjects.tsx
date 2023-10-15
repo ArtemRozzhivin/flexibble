@@ -33,9 +33,6 @@ const RelatedProjects = ({ userId, projectId }: IRelatedProjects) => {
     fetchUser();
   }, []);
 
-  console.log(user);
-  console.log(projects);
-
   return (
     <section className='flex flex-col gap-10 w-full mt-20'>
       <div className='flexBetween'>

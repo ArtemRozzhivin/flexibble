@@ -16,8 +16,6 @@ const Pagination = ({ endCursor, startCursor, hasNextPage, hasPreviousPage }: IP
   const router = useRouter();
 
   const hadnlePaginate = (direction: string) => {
-    console.log('DIRECTION', direction);
-    console.log('CURRENT PARAMS', currentParams.toString());
     if (direction === 'next' && hasNextPage) {
       currentParams.delete('startсursor');
       currentParams.set('endcursor', endCursor);

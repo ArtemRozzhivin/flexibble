@@ -29,8 +29,6 @@ const ProjectForm = ({ session, type, projectForm }: IProjectForm) => {
     category: projectForm?.category || '',
   });
 
-  console.log('FORM', form);
-
   const handleSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 

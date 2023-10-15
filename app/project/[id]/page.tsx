@@ -20,8 +20,6 @@ const ProjectPage = async ({ params }: { params: { id: string } }) => {
 
   const isOwner = session.user.id === project.createdBy?.id;
 
-  console.log(project);
-
   return (
     <div className='mt-20'>
       <Modal>
