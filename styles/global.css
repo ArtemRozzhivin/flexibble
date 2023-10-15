@@ -139,7 +139,7 @@ body {
 
 /* Profile Menu */
 .profile_menu-items {
-  @apply flex-col absolute right-1/2 translate-x-1/2 mt-3 p-7 sm:min-w-[220px] min-w-max rounded-xl bg-white border border-nav-border shadow-menu;
+  @apply flex-col absolute right-[90px] sm:right-[105px] translate-x-1/2 mt-3 p-7 sm:min-w-[220px] min-w-max rounded-xl bg-white border border-nav-border shadow-menu;
 }
 
 /* Profile Card */
@@ -149,7 +149,7 @@ body {
 
 /* Project Form */
 .form {
-  @apply flex-col w-full lg:py-24 py-12 gap-10 text-lg max-w-5xl mx-auto;
+  @apply flex-col w-full lg:py-24 px-3 py-12 gap-10 text-lg max-w-5xl mx-auto;
 }
 
 .form_image-container {

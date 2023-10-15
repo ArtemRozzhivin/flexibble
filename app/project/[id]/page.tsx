@@ -62,7 +62,7 @@ const ProjectPage = async ({ params }: { params: { id: string } }) => {
 
         <section className='flexCenter flex-col gap-10 text-center mt-14'>
           <p className=''>{project.description}</p>
-          <div className='text-lg font-semibold text-gray-500 flexBetween gap-10'>
+          <div className='text-lg font-semibold text-gray-500 flexBetween gap-3 flex-col sm:flex-row sm:gap-10'>
             <Link className='flexCenter gap-2' href={project.githubUrl}>
               <Button type='button' pirmary>
                 <Image src='/github.svg' width={25} height={25} alt='gitHub' />
@@ -79,7 +79,7 @@ const ProjectPage = async ({ params }: { params: { id: string } }) => {
           </div>
         </section>
 
-        <section className='flexBetween w-full gap-20 mt-20'>
+        <section className='flexBetween w-full gap-2 sm:gap-20 mt-20'>
           <span className='w-full h-[1px] bg-light-white-200'></span>
           <Image
             className='rounded-full'
