@@ -2,7 +2,7 @@
 
 import { categoryFilters } from '@constants';
 import React from 'react';
-import Button from './Button';
+import Button from './ui/Button';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 
 const Categories = () => {

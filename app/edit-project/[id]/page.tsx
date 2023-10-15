@@ -1,6 +1,6 @@
 import { ProjectInterface } from '@common.types';
-import Modal from '@components/Modal';
-import ProjectForm from '@components/ProjectForm';
+import Modal from '@components/ui/Modal';
+import ProjectForm from '@components/project/ProjectForm';
 import { fetchProjectDetailsById } from '@lib/actions';
 import { getCurrentSession } from '@lib/nextAuthOptions';
 import React from 'react';

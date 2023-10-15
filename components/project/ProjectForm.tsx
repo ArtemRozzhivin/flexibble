@@ -2,10 +2,10 @@
 
 import React from 'react';
 import Image from 'next/image';
-import FormField from './FormField';
+import FormField from '../ui/FormField';
 import { categoryFilters } from '@constants';
-import Dropdown from './Category';
-import Button from './Button';
+import Dropdown from '../ui/ListBox';
+import Button from '../ui/Button';
 import { createNewProject, editProject, fetchToken } from '@lib/actions';
 import { FormState, ProjectInterface, SessionInterface } from '@common.types';
 import { useRouter } from 'next/navigation';

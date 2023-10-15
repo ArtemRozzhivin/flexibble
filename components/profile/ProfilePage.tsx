@@ -3,9 +3,9 @@
 import { ProjectInterface, UserProfile } from '@common.types';
 import { User } from 'next-auth';
 import React from 'react';
-import Button from './Button';
+import Button from '../ui/Button';
 import Image from 'next/image';
-import ProjectCard from './ProjectCard';
+import ProjectCard from '../project/ProjectCard';
 import Link from 'next/link';
 
 interface IProfilePage {

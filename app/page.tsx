@@ -1,7 +1,7 @@
 import { ProjectInterface } from '@common.types';
 import Categories from '@components/Categories';
-import Pagination from '@components/Pagination';
-import ProjectList from '@components/ProjectList';
+import Pagination from '@components/ui/Pagination';
+import ProjectList from '@components/project/ProjectList';
 import { fetchAllProjects } from '@lib/actions';
 import { useSearchParams } from 'next/navigation';
 import React from 'react';

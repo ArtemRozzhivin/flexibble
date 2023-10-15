@@ -2,14 +2,14 @@ import { Listbox, Menu, Transition } from '@headlessui/react';
 import React from 'react';
 import { ChevronDownIcon } from '@heroicons/react/24/solid';
 
-type CategoryProps = {
+type ListProps = {
   value: string;
   onChange: (value: string) => void;
   list: string[];
   required?: boolean;
 };
 
-const Category = ({ value, onChange, list, required }: CategoryProps) => {
+const List = ({ value, onChange, list, required }: ListProps) => {
   return (
     <Listbox value={value} onChange={onChange} as='div' className='relative'>
       {({ open }) => (
@@ -39,4 +39,4 @@ const Category = ({ value, onChange, list, required }: CategoryProps) => {
   );
 };
 
-export default Category;
+export default List;

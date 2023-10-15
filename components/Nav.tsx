@@ -4,8 +4,8 @@ import Link from 'next/link';
 import React from 'react';
 import AuthProviders from './AuthProviders';
 import { getCurrentSession } from '@lib/nextAuthOptions';
-import ProfileMenu from './ProfileMenu';
-import Button from './Button';
+import Button from './ui/Button';
+import ProfileMenu from './profile/ProfileMenu';
 
 // because we are using next, so we make this function async
 const Nav = async () => {

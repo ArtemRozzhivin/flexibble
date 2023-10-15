@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import React, { useState } from 'react';
-import Button from './Button';
+import Button from '../ui/Button';
 import { deleteProject, fetchToken } from '@lib/actions';
 import { useRouter } from 'next/navigation';
 

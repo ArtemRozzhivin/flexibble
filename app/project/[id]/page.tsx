@@ -1,8 +1,8 @@
 import { ProjectInterface } from '@common.types';
-import Button from '@components/Button';
-import Modal from '@components/Modal';
-import ProjectActions from '@components/ProjectActions';
-import RelatedProjects from '@components/RelatedProjects';
+import Button from '@components/ui/Button';
+import Modal from '@components/ui/Modal';
+import ProjectActions from '@components/project/ProjectActions';
+import RelatedProjects from '@components/project/RelatedProjects';
 import { fetchProjectDetailsById } from '@lib/actions';
 import { getCurrentSession } from '@lib/nextAuthOptions';
 import Image from 'next/image';

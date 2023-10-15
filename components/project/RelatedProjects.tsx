@@ -4,7 +4,7 @@ import { getUserById } from '@lib/actions';
 import React, { useEffect } from 'react';
 import { ProjectInterface, UserProfile } from '@common.types';
 import ProjectCard from './ProjectCard';
-import Button from './Button';
+import Button from '../ui/Button';
 import Link from 'next/link';
 
 interface IRelatedProjects {
