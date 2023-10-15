@@ -33,8 +33,8 @@ const ProjectCard = ({
         className='flexCenter group relative w-full h-full'>
         <Image
           src={image}
-          width={414}
-          height={314}
+          width={314}
+          height={214}
           className='w-full h-full object-cover rounded-2xl'
           alt='project image'
         />

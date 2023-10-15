@@ -5,6 +5,7 @@ import React, { useEffect } from 'react';
 import { ProjectInterface, UserProfile } from '@common.types';
 import ProjectCard from './ProjectCard';
 import Button from './Button';
+import Link from 'next/link';
 
 interface IRelatedProjects {
   projectId: string;
@@ -42,9 +43,11 @@ const RelatedProjects = ({ userId, projectId }: IRelatedProjects) => {
           More by <span className='text-purple-600 text-lg'>{user.name}</span>
         </p>
 
-        <Button type='button' border>
-          View all
-        </Button>
+        <Link href={`/profile/${user.id}`}>
+          <Button type='button' border>
+            View all
+          </Button>
+        </Link>
       </div>
 
       {projects.length === 0 ? (

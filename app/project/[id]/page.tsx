@@ -27,13 +27,15 @@ const ProjectPage = async ({ params }: { params: { id: string } }) => {
       <Modal>
         <section className='w-full flexBetween'>
           <div className='flexCenter gap-5'>
-            <Image
-              className='rounded-full'
-              width={65}
-              height={65}
-              src={project.createdBy?.avatarUrl}
-              alt='User'
-            />
+            <Link href={`/profile/${project.createdBy?.id}`}>
+              <Image
+                className='rounded-full'
+                width={65}
+                height={65}
+                src={project.createdBy?.avatarUrl}
+                alt='User'
+              />
+            </Link>
             <div className='flex justify-center items-start flex-col gap-2'>
               <p className='text-2xl font-bold'>{project.title}</p>
               <p className='text-sm font-semibold text-gray-500 flexBetween gap-2'>
@@ -52,8 +54,8 @@ const ProjectPage = async ({ params }: { params: { id: string } }) => {
           <Image
             className='object-cover rounded-2xl'
             src={project.image}
-            width={1064}
-            height={798}
+            width={764}
+            height={698}
             alt='Project Image'
           />
         </section>
