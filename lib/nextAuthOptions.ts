@@ -8,8 +8,6 @@ import { createUser, getUser } from './actions';
 import jsonwebtoken from 'jsonwebtoken';
 import { JWT } from 'next-auth/jwt';
 
-type userProfile = {};
-
 export const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({

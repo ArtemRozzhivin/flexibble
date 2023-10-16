@@ -1,34 +1,59 @@
+#Flexibble
+
+![Flexibble](image.png 'Main screen')
+
+Flexibble is a full-stack project inspired by the famous Dribbble website, a self-promotion and social networking platform for digital designers. It serves as a platform for designers' portfolios, a job search site, and a recruiting platform. Flexibble aims to create a similar platform for designers, software developers, game developers, and other creatives to showcase their work.
+
+## Technologies used
+
+- TypeScript
+- React
+- Tailwind CSS
+- Next.js
+- GraphQL
+- Grafbase
+
+## Features.
+
+- **Authentication**: Users can log in with their Google accounts.
+
+- Frontend and Backend: Flexibble is a full-stack application. The frontend is built using React and Next.js, while the backend uses Grafbase as a database.
+
+- CRUD operations: The frontend allows users to perform create, read, update, and delete (CRUD) operations, allowing them to manage their projects efficiently.
+
+- Pagination: The application includes pagination to help manage a large number of projects more efficiently.
+
+- Search by category\*\*: Users can search for projects by category, making it easier to find the content they need.
+
+- User accounts: Users can create and manage their own accounts on Flexibble.
+
+## Learning experience.
+
+While developing this application, I gained valuable experience in the following areas:
+
+- **Next.js**: I learned how to use Next.js for application routing and server-side rendering.
+
+- Filtering functionality: Implementing filtering functionality to help users find projects more efficiently.
+
+- Pagination\*\*: Developed full pagination capabilities to manage large data sets.
+
+- Image uploading: Handling image uploads, which is an important feature for a platform like Flexibble.
+
+- TypeScript: Gain skills in writing TypeScript code for better type safety.
+
+- Grafbase: I learned how to work with Grafbase, a serverless GraphQL platform, and how to connect it to a Flexibble application.
+
+## Getting Started.
+
+To get started with Flexibble, follow these steps:
+
+1. Clone this repository.
+2. Navigate to the project directory.
+3. Run `npm install` to install the necessary dependencies.
+4. Create an .env file and fill in the required fields
+5. Configure the Grafbase settings in the application.
+6. Run `npm run dev` to start the development server.
+
+Feel free to explore the code base and start sharing your projects on Flexibble!😁
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

@@ -47,13 +47,12 @@ const ProjectPage = async ({ params }: { params: { id: string } }) => {
           </div>
           {isOwner && <ProjectActions projectId={params.id} />}
         </section>
-
         <section className='mt-14'>
           <Image
             className='object-cover rounded-2xl'
             src={project.image}
-            width={764}
-            height={698}
+            width={1064}
+            height={798}
             alt='Project Image'
           />
         </section>
@@ -76,7 +75,6 @@ const ProjectPage = async ({ params }: { params: { id: string } }) => {
             </Link>
           </div>
         </section>
-
         <section className='flexBetween w-full gap-2 sm:gap-20 mt-20'>
           <span className='w-full h-[1px] bg-light-white-200'></span>
           <Image
@@ -88,7 +86,6 @@ const ProjectPage = async ({ params }: { params: { id: string } }) => {
           />
           <span className='w-full h-[1px] bg-light-white-200'></span>
         </section>
-
         <RelatedProjects userId={project.createdBy?.id} projectId={params.id} />
       </Modal>
     </div>
