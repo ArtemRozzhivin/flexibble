@@ -1,6 +1,6 @@
-#Flexibble
+# Flexibble
 
-![Flexibble](image.png 'Main screen')
+![Flexibble]("/mainscreen.png" 'Main screen')
 
 Flexibble is a full-stack project inspired by the famous Dribbble website, a self-promotion and social networking platform for digital designers. It serves as a platform for designers' portfolios, a job search site, and a recruiting platform. Flexibble aims to create a similar platform for designers, software developers, game developers, and other creatives to showcase their work.
 
